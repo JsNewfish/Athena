@@ -1,0 +1,16 @@
+<div class="fileupload fileupload-withbtn">
+    <div class="input-group" data-ng-click="selectFile()">
+        <div type="text" class="form-control ng-pristine ng-valid" placeholder="请按模板格式编辑后上传">
+            <div class="fileupload-preview"></div>
+        </div>
+        <span class="input-group-addon btn-base btn-file">
+             <span class="btn-file-name">浏览</span>
+             <input type="file" class="file-input-single" ng-show="!options.multiple"/>
+            <input type="file" class="file-input-multiple" ng-show="options.multiple" multiple="multiple"/>
+        </span>
+        <span class="input-group-addon btn-base btn-clear" ng-click="clear()">
+             <span class="btn-file-name">清除</span>
+        </span>
+    </div>
+    <span class="text-primary link download" ng-click="downloadTmpl()" ng-show="options.showDownload">下载模板 </span>
+</div>

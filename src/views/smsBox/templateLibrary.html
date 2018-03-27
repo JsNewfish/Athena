@@ -1,0 +1,96 @@
+<div class="view-templatelibrary"  >
+    <div class="modal-header" >
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()"><span
+                aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title">引用模板</h3>
+    </div>
+    <div class="modal-body" >
+        <div class="">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-target="#default" data-toggle="tab">系统短信模板</a></li>
+                <li><a data-target="#custom" data-toggle="tab">自定义短信模板库</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <!--系统短语-->
+                <div class="tab-pane default-template active pos-r" id="default" cg-busy="{promise:loading ,message:'加载中。。。'}">
+                    <div dp-select-group ng-model="keyword" type="single">
+                        <div dp-select value="系统短信" text="默认"></div>
+                        <div dp-select value="常规版" text="常规版"></div>
+                        <div dp-select value="创意版" text="创意版"></div>
+                        <div dp-select value="幽默版" text="幽默版"></div>
+                        <div dp-select value="萌版" text="萌版"></div>
+                        <div dp-select value="按更新时间" text="按更新时间"></div>
+                    </div>
+                    <table class="table table-hover template-list no-shadow">
+                        <tr>
+                            <th width="10%">序号</th>
+                            <th>短信内容 </th>
+                            <th>热度 <!--<i class="text-base glyphicon glyphicon-question-sign"></i>--></th>
+                            <th colspan="2"></th>
+                        </tr>
+                        <tr ng-repeat="template in systemLibrary"  >
+                            <td> {{$index+1}}</td>
+                            <td ng-bind-html="template.preview" class="phone-content-preview"></td>
+                            <td style="width: 120px;">
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                            </td>
+                            <td>
+                                <button class="btn btn-warning btn-sm" ng-click="useTemplate(template)">使用</button>
+                            </td>
+                        </tr>
+                        <tr ng-if="!systemLibrary.length">
+                            <td colspan="4">
+                                <div class="none-item-container">
+                                    <div class="none-item" style="padding: 89px 0;">
+                                        <div class="icon">
+                                        </div>
+                                        没有数据哦~换个条件试试吧~ <a href=""></a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!--自定义短语-->
+                <div class="tab-pane custom-template pos-r" id="custom">
+                    <table class="table table-hover template-list">
+                        <tr>
+                            <th width="10%">序号</th>
+                            <th width="20%" class="text-overflow">模板名称</th>
+                            <th>短信内容 <span>(展开全部)</span></th>
+                            <!--<th>热度 <i class="text-base glyphicon glyphicon-question-sign"></i></th>-->
+                            <th colspan="2"></th>
+                        </tr>
+                        <tr ng-repeat="template in customLibrary">
+                            <td> {{$index+1}}</td>
+                            <td> {{template.name}}</td>
+                            <td ng-bind-html="template.preview" class="phone-content-preview"></td>
+                            <!--<td>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                            </td>-->
+                            <td style="width: 120px;">
+                                <button class="btn btn-warning btn-sm" ng-click="useTemplate(template)">使用</button>
+                                <button class="btn btn-warning btn-sm" ng-click="deleteTemplate(template,$event)">删除</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="text-center">
+            <button class="btn btn-default" ng-click="cancel()">取&nbsp;&nbsp;消</button>
+        </div>
+    </div>
+</div>

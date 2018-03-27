@@ -1,0 +1,35 @@
+.view-edit {
+  .main-form {
+    padding-top:15px;
+    .form-group {
+      .control-label,.controls {
+        float: left;
+        padding-left:10px;
+        padding-right:10px;
+        color:#999;
+      }
+      .control-label{
+        width: 180px;
+      }
+
+      .form-control{
+        height: 40px;
+      }
+    }
+  }
+
+  .quick-labels {
+    margin-top: 10px;
+    .label {
+      display: inline-block;
+      margin-bottom: 5px;
+      padding: 3px 4px;
+      background-color: #F7F7F7;
+      border: 1px solid #D8D8D8;
+      color: #777;
+      margin-right:5px;
+    }
+  }
+}
+
+

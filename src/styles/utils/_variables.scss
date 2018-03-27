@@ -1,0 +1,150 @@
+@charset "utf-8";
+
+/* global color */
+//colors
+$gray-base:              #000;
+$gray-darker:            lighten($gray-base, 13.5%); // #222
+$gray-dark:              lighten($gray-base, 20%);   // #333
+$gray:                   lighten($gray-base, 33.5%); // #555
+/*$gray-light:             lighten($gray-base, 46.7%); // #777*/
+$gray-light:             #666;                       // #666
+$gray-lighter:           lighten($gray-base, 93.5%); // #999
+$gray-lightest:          lighten($gray-base, 93.5%); // #eee
+
+$green:                  #40A144;
+//$green:                  #00b38a;
+$blue:                   #428bca;
+$light-blue:             #6CC2F9;
+$orange:                 #FC8746;
+$light-orange:           #FDA704;
+$red:                    #d00;
+//typography
+$font-family-sans-serif:  "Microsoft Yahei","Helvetica Neue", Helvetica, Arial, sans-serif;//无衬线
+$font-family-serif:       Georgia, "Times New Roman", Times, serif;//衬线
+$font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;//苹果专用字体
+$font-size-normal:          14px;
+$font-size-large:         ceil(($font-size-normal * 1.25)); // ~18px
+$font-size-small:         ceil(($font-size-normal * 0.85)); // ~12px
+
+/* scaffolding */
+/*$color-base:             #00b38a;;*/
+/*$color-base:             #40A144;*/
+$color-base:             #107FE4;
+$color-primary:          #3C93CE;
+$color-success:          #5cb85c;
+$color-info:             #5bc0de;
+$color-warning:          #F8D053;
+$color-danger:           #d9534f;
+$color-disable:          $gray-lightest;
+
+$bg-color-base:          $color-base;
+$bg-color-fill:          #ebf0ef;
+$border-color-base:      #ddd;
+$text-color-base:        #333;
+//state-color
+//$state-success-text:             #3c763d !default;
+//$state-success-bg:               #dff0d8 !default;
+$state-success-text:             #333333 !default;
+$state-success-bg:               #ecf6ff !default;
+$state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%) !default;
+
+$state-info-text:                #31708f !default;
+$state-info-bg:                  #d9edf7 !default;
+$state-info-border:              darken(adjust-hue($state-info-bg, -10), 7%) !default;
+
+$state-warning-text:             #8a6d3b !default;
+$state-warning-bg:               #fcf8e3 !default;
+$state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 5%) !default;
+
+$state-danger-text:              #a94442 !default;
+$state-danger-bg:                #f2dede !default;
+$state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%) !default;
+
+//typography
+$font-family-base:        $font-family-sans-serif;
+$font-size-base:          $font-size-normal;
+$font-size-h1:            floor(($font-size-base * 2.6)); // ~36px
+$font-size-h2:            floor(($font-size-base * 2.15)); // ~30px
+$font-size-h3:            ceil(($font-size-base * 1.7)); // ~24px
+$font-size-h4:            ceil(($font-size-base * 1.25)); // ~18px
+$font-size-h5:            $font-size-base;
+$font-size-h6:            ceil(($font-size-base * 0.85)); // ~12px
+
+//line-height
+$line-height-base:        1.428571429; // 20/14
+$line-height-computed:    floor(($font-size-base * $line-height-base)); // ~20px
+//Iconography
+$icon-font-path:          "../fonts/";
+$icon-font-name:          "glyphicons-halflings-regular";
+$icon-font-svg-id:        "glyphicons_halflingsregular";
+
+//z-index
+$zindex-navbar:            1000 !default;
+$zindex-dropdown:          1000 !default;
+$zindex-navbar-fixed:      1030 !default;
+$zindex-modal-background:  1040 !default;
+$zindex-modal:             1050 !default;
+$zindex-popover:           1060 !default;
+$zindex-tooltip:           1070 !default;
+
+//link
+$link-color:            #486F8A;
+$link-hover-color:      darken($link-color, 15%);
+$link-hover-decoration: none;
+
+//Media screen
+$screen-xs:                  480px;
+$screen-xs-min:              $screen-xs;
+$screen-phone:               $screen-xs-min;
+
+$screen-sm:                  768px;
+$screen-sm-min:              $screen-sm;
+$screen-tablet:              $screen-sm-min;
+
+$screen-md:                  992px;
+$screen-md-min:              $screen-md;
+$screen-desktop:             $screen-md-min;
+
+$screen-lg:                  1200px;
+$screen-lg-min:              $screen-lg;
+$screen-lg-desktop:          $screen-lg-min;
+
+$screen-xs-max:              ($screen-sm-min - 1);
+$screen-sm-max:              ($screen-md-min - 1);
+$screen-md-max:              ($screen-lg-min - 1);
+/* components */
+
+/* page */
+$header-color-base:$bg-color-base;
+$header-color-dark:#00af87;
+$header-color-darker:#00755f;
+
+$ads-border-color:            $state-warning-border;
+$ads-bg-color:                $state-warning-bg;
+$ads-text-color:              $state-warning-text;
+
+$sidebar-width:               170px;
+$header-height:               70px;
+
+/* alert */
+$alert-fixed-index:1060;
+
+// page Form the filter background-color and border
+$filter-background:    #fafafa;
+$filter-border:        1px solid #e8e8e8;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

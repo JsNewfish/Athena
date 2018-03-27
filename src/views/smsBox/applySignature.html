@@ -1,0 +1,112 @@
+<div class="view-applySignatureBox">
+    <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title">个性签名申请</h3>
+    </div>
+    <div class="modal-body" cg-busy="{promise:loading ,message:'加载中。。。'}">
+        <div class="slogan slogan-help">
+            <img src="//st.cuxiao.quannengzhanggui.net/static/cdist/images/components/smsEditor/reminder.png" class="slogan-icon">
+
+            <div class="slogan-content">
+                <h5>温馨提示：</h5>
+                <div>1. 请使用店铺名或品牌名作为短信签名，短信签名长度为3-8个字符，超出请精简字数。</div>
+                <div>2. 全数字、全英文、平台级签名（如：淘宝、天猫等）、签名含有敏感词（如：客户您好、加微信等）都不予以通过。</div>
+                <div>3. 每个店铺最多可申请3个短信签名。</div>
+                <div>
+                    4. 短信签名审核周期 1 到 2 个工作日，一旦审核通过不能修改，如有特殊需求或修改请联系在线客服。
+                    <a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid=%E5%85%A8%E8%83%BD%E5%B0%8F%E7%A7%98%E6%9C%8D%E5%8A%A1%E4%B8%AD%E5%BF%83&siteid=cntaobao&status=1&charset=utf-8"><img border="0" src="http://amos.alicdn.com/realonline.aw?v=2&uid=%E5%85%A8%E8%83%BD%E5%B0%8F%E7%A7%98%E6%9C%8D%E5%8A%A1%E4%B8%AD%E5%BF%83&site=cntaobao&s=1&charset=utf-8" alt="点击这里给我发消息" /></a>
+                </div>
+            </div>
+        </div>
+        <div style="padding-top: 10px;margin-bottom: -15px;">
+            <form class="form-horizontal" name="mainForm">
+                <div class="shop-info" ng-if="!status">
+                    <div class="form-group" ng-class="{'has-error':mainForm.realName.$invalid}">
+                        <label class="control-label col-xs-4"><span class="text-warning">*&nbsp</span>姓名:</label>
+                        <div class="controls col-xs-8">
+                            <input type="text" class="form-control input-sm input-long no-transition" name="realName"
+                                   ng-model="shopInfo.realName"
+                                   required
+                                   dp-not-all-english="^[A-Za-z]+$"
+                                   ng-maxlength="8"/>
+                           <div class="help-block" ng-show="mainForm.realName.$invalid">
+                               <span ng-show="mainForm.realName.$error.required">请输入姓名</span>
+                               <span ng-show="mainForm.realName.$error.dpNotAllEnglish">姓名不能全为英文</span>
+                               <span ng-show="mainForm.realName.$error.maxlength">不能超过8个字符</span>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-4"><span class="text-warning">*&nbsp</span>角色:</label>
+                        <div class="controls col-xs-8">
+                            <select type="text" class="form-control input-sm input-long no-transition" name="role"
+                                    ng-model="shopInfo.role">
+                                <option value="0">店长/运营</option>
+                                <option value="1">CRM专员</option>
+                                <option value="2">客服</option>
+                                <option value="3">老板</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-4">QQ:</label>
+                        <div class="controls col-xs-8">
+                            <input type="text" class="form-control input-sm input-long no-transition" name="qq"
+                                   ng-model="shopInfo.qq"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-4"><span class="text-warning">*&nbsp</span>手机号:</label>
+                        <div class="controls col-xs-8">
+                            <input type="text" class="form-control input-sm input-long form-control-static"
+                                   name="checkCodeMobile"
+                                   ng-model="shopInfo.checkCodeMobile" ng-disabled="!isEdit && status"/>
+                            <span ng-if="!isEdit && status" class="text-base link form-text" ng-click="modifyMobile()"> 修改</span>
+                            <span ng-if="isEdit && !isValidate && status" class="text-base link form-text"
+                                  ng-click="exitModifyMobile()"> 取消</span>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="!status || isEdit" ng-class="{'has-error':mainForm.checkCode.$invalid}">
+                        <label class="control-label col-xs-4"><span class="text-warning">*&nbsp</span> 验证码:</label>
+                        <div class="controls col-xs-8">
+                            <input type="text" class="form-control input-sm input-long form-control-static no-transition"
+                                   name="checkCode"
+                                   required
+                                   ng-model="shopInfo.checkCode"/>
+                            <span class="link form-text text-base" ng-if="!checkCodeTime"
+                                  ng-click="getCheckCode()">获取验证码
+                            </span>
+                            <span ng-show="checkCodeTime"> {{checkCodeTime}}后重发...</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="shopName">
+                    <div class="form-group" ng-class="{'has-error':mainForm.shopName.$invalid}">
+                        <div class="control-label col-xs-4">
+                            个性签名:
+                        </div>
+                        <div class="controls col-xs-8">
+                            <input type="text" class="form-control input-lg input-long no-transition"
+                                   name="shopName"
+                                   ng-minlength="3"
+                                   ng-maxlength="8"
+                                   ng-model="shopName"
+                                   required/>
+                            <div class="help-block" ng-show="mainForm.shopName.$invalid">
+                                <span >请输入3~8个字符</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="text-center">
+            <button class="btn btn-base" ng-click="save()" ng-class="{disabled:mainForm.$invalid}">马上申请</button>
+            <button class="btn btn-default" data-ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>

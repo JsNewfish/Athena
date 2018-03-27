@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <button type="button" class="close" aria-label="Close" ng-click="cancel()">
+        <span aria-hidden="true">&times;</span></button>
+    <h3 class="modal-title">{{data.windowTitle}}</h3>
+</div>
+<div class="modal-body">
+    <div class="show-table" style="overflow: auto">
+        <div class="confirm-icon">
+            <img ng-src="{{data.img}}">
+        </div>
+        <div class="confirm-content">
+            <h4 class="confirm-title" ng-bind="data.title"></h4>
+            <div ng-bind-html="data.content"></div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="text-center">
+        <a class="btn btn-base btn-sm" ng-click="close()" ng-show="data.showClose" ng-bind="data.closeText" ng-href="{{data.redirect}}" target="_blank"></a>
+        <a class="btn btn-default btn-sm" ng-class="{'btn-base':!data.showClose}" ng-click="cancel()" ng-show="data.showCancel" ng-bind="data.cancelText" ng-href="{{data.redirectCancel}}" target="_blank"></a>
+    </div>
+</div>

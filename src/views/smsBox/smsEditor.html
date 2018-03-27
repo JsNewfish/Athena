@@ -1,0 +1,89 @@
+<div class="sms-editor">
+    <div class="navbar navbar-default sms-editor-heading">
+        <span class="navbar-text" ng-if="innerVariables.length">插入</span>
+        <ul class="nav navbar-nav param-list">
+            <li ng-repeat="item in innerVariables">
+                <a data-key="{{item.name}}"
+                   ng-if="!item.isTmp"
+                   class="param"
+                   tooltip="{{'默认'+item.count+'个字，以实际变量为准'}}">#{{item.text}}
+                </a>
+                <a data-key="{{item.name}}"
+                   class="tmp-param"
+                   ng-if="item.isTmp">
+                    {{item.text}}
+                </a>
+            </li>
+            <li class="dropdown" ng-show="outerVariables.length">
+                <a class="dropdown-toggle more" data-toggle="dropdown">
+                    更多
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu param-list-more">
+                    <li ng-repeat="item in outerVariables">
+                        <a data-key="{{item.name}}"
+                           ng-if="!item.isTmp"
+                           class="param"
+                           tooltip="{{'默认'+item.count+'个字，以实际变量为准'}}">#{{item.text}}
+                        </a>
+                        <a data-key="{{item.name}}"
+                           class="tmp-param"
+                           ng-if="item.isTmp">
+                            {{item.text}}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right temp-select">
+            <li ng-show="options.showUrlCreator">
+                <a style="color: #FF081D;font-size: 14px;" ng-click="createShortLink()">生成活动短链</a>
+            </li>
+            <li class="dropdown" ng-show="options.showTmplOperation">
+                <a href="dropdown-toggle" data-toggle="dropdown">
+                    短信模板
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a ng-click=" selectFromLibrary()">引用短信模板</a></li>
+                    <li><a ng-click="saveToLibrary()">另存为短信模板</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="editor" contenteditable="true">
+    </div>
+    <div class="navbar navbar-default sms-editor-footer">
+        <div class="navbar-text signature-label">签名：</div>
+        <div class="navbar-form navbar-left">
+            <div class="form-group">
+                <select name="" id="" class="form-control input-sm signature"
+                        ng-options="item.key as item.value  for item in signatureSource"
+                        ng-model="signature">
+                </select>
+            </div>
+        </div>
+        <ul class="nav navbar-nav navbar-left">
+            <li>
+                <!-- <a ng-if="showApplySignature" class="text-base" ng-click="applySignature()"><span
+                        class="text-base">申请个性签名</span></a> -->
+                <a class="text-base" ng-click="applySignature()">
+                <span class="text-base" tooltip="最多可申请三个签名">
+                申请个性签名
+                </span>
+                </a>
+                <a class="text-waning" style="color: #FC8746;" ng-bind="signatureAuditStatus"></a>
+            </li>
+        </ul>
+        <div class="navbar-text navbar-right input-count-stat"
+             tooltip="{{chargingTip}}"
+             tooltip-placement="right">
+            已输入<span class="input-count" ng-bind="count"></span>
+            个字，共计
+            <sapn class="msg-total-count" ng-bind="number"></sapn>
+            条短信。
+            <span class="mess-preview-billing-rule">计费规则</span>
+        </div>
+        <a class="unsubscribe" ng-show="options.showBack">回T退订</a>
+    </div>
+</div>

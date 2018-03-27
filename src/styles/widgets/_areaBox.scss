@@ -1,0 +1,15 @@
+.area-box {
+  label.ng-binding {
+    width: 75px;
+    cursor: pointer;
+    line-height: 2.4;
+    padding-left: 6px;
+    &:hover {
+      background-color: #eee;
+      color: gray;
+    }
+    input {
+      margin-right: 3px;
+    }
+  }
+}

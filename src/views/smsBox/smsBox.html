@@ -1,0 +1,98 @@
+<fieldset class="inform-box sms-box clearfix" ng-class="{active:opened}">
+    <legend class="title">{{options.title}}
+        <small class="text-base cursor-hand"
+               ng-click="open()"
+               ng-show="!opened&&enabled"
+                >【修改】
+        </small>
+    </legend>
+    <!--预览状态-->
+    <div class="col-xs-12 content status-preview" ng-show="!opened">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-horizontal layout-form">
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">短信内容：</label>
+
+                        <div class="col-xs-10">
+                            <p class="form-text phone-content-preview" ng-bind-html="template.viewValue"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--编辑状态-->
+    <div class="col-xs-12  content status-edit" ng-show="opened" cg-busy="{promise:loading ,message:'保存中。。。'}">
+        <div class="row">
+            <div class="col-xs-12 msg-editor-box">
+                <div class="form-horizontal layout-form">
+                    <div style="height: 40px;" ng-show="!options.showReceiverType"></div>
+                    <div class="form-group" ng-show="options.showReceiverType">
+                        <label class="col-xs-2 control-label">短信接收人：</label>
+
+                        <div class="col-xs-10 receiver-type-source"></div>
+                    </div>
+                    <div class="form-group ">
+                        <label class="col-xs-2 control-label">短信内容：</label>
+
+                        <div class="col-xs-10">
+                            <div dp-sms-editor="editorOptions"
+                                 signature="template.signatureId"
+                                 ng-model="template.content"
+                                 ctrl="ctrl.editorCtrl"
+                                 changed-action="setPreView(content,signature)"></div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label class="col-xs-2 control-label">温馨提示：</label>
+
+                        <div class="col-xs-10 form-text text-primary">
+                            短信长度计算时加上了短信签名和回T退订的长度，无需手动输入；短链接前后请加上空格;
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneTestText" class="col-xs-2 control-label">
+                        <span ng-if="options.type==14">提醒手机号：</span>
+                        <span ng-if="options.type!=14">测试手机：</span>
+                        </label>
+                        <div class="col-xs-8 test-send-control">
+                            <input class="form-control col-xs-2 send-test-input" id="phoneTestText"
+                                   ng-model="template.mobile"
+                                   placeholder="最多可输入5个手机号，以逗号“，”隔开……" type="text">
+                            <a ng-show="enableSend" class="test-send"
+                               ng-click="sendTest()"
+                               tooltip-html-unsafe="{{sendTestTip}}"
+                               tooltip -placement="right">测试发送</a>
+                            <a class="text-disable test-disableSend test-send" ng-show="!enableSend"
+                               tooltip-html-unsafe="为避免重复发送，测试短信发送成功后30s才能再发">{{seconds}}s 后再发</a>
+                    
+                            <div class="checkbox" ng-show="options.isJoin">
+                                <label>
+                                    <input type="checkbox" dp-boolean-adapter ng-model="template.isJoin"/>
+                                    加入正式发送
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-xs-2"></label>
+
+                        <div class="col-xs-8 operations">
+                            <button ng-show="options.showBtnOk" class="btn btn-base w-100" ng-click="save()" ng-bind="options.btnOkName"></button>
+                            &nbsp;
+                            <button ng-show="options.showBtnNo" class="btn btn-default w-100" ng-click="exit()" ng-if="!options.staticMode">取消
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="msg-preview">
+                <div class="phone">
+                    <div class="phone-content phone-content-preview">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>

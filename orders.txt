@@ -1,0 +1,5 @@
+//gulp
+npm install gulp --save-dev
+
+//ÒÀÀµ°ü
+npm install gulp-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify gulp-rename gulp-livereload gulp-cache --save-dev

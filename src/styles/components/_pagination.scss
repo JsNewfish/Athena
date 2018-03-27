@@ -1,0 +1,56 @@
+.paging-bar {
+  .pagination > li > a, .pagination > li > span {
+  }
+  .pagination > .active > a,
+  .pagination > .active > span,
+  .pagination > .active > a:hover,
+  .pagination > .active > span:hover,
+  .pagination > .active > a:focus,
+  .pagination > .active > span:focus {
+    background-color: $color-base;
+    border-color: $color-base;
+  }
+  .pagination {
+    margin-right:10px;
+    .size-setting {
+      .size-selector {
+        padding: 0;
+        line-height: 20px;
+        height: 26px;
+        width: 48px;
+        display: inline-block;
+        min-width: initial;
+        margin: -10px -9px -10px 0;
+        border: none;
+        box-shadow: none;
+      }
+    }
+  }
+  .operation,.goto {
+    > li
+    > a, > li > span {
+      cursor: default;
+      &:hover {
+        background-color: #fff;
+      }
+    }
+  }
+  .operation {
+    margin-right: 5px;
+  }
+  .goto {
+    .input-goto {
+      width: 33px;
+      margin: 0 -7px;
+      height: 20px;
+      border: none;
+      outline: none;
+    }
+    .btn-goto {
+      cursor: pointer;
+      &:hover {
+        color: $color-base;
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+<div class="paging-bar paging-bar-simple clearfix" ng-hide="Hide">
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle w-100" type="button" id="dropdownMenu1" data-toggle="dropdown">
+        {{page}}/{{pageCount}}
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li title="{{Item.title}}" ng-repeat="Item in List"
+                ng-class="Item.liClass"
+                ng-click="Item.action()">
+                <a >
+                    <span ng-if="Item.title">第{{Item.value}}页</span>
+                    <span ng-if="!Item.title">{{Item.value}}</span> 
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

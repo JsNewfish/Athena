@@ -1,0 +1,27 @@
+.view-star{
+  width:90px;
+  height: 40px;
+
+  .bg{
+    position: absolute;
+    width:90px;
+    height: 40px;
+    background-color: $gray-lighter;
+
+  }
+  .bg-active{
+    position: absolute;
+    width:90px;
+    height: 40px;
+    background-color: $light-orange;
+    z-index: 1;
+  }
+
+  .mask{
+    position: absolute;
+    width:90px;
+    height: 40px;
+    background: url("../images/components/star.png");
+    z-index: 2;
+  }
+}

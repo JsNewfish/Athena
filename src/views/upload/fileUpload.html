@@ -1,0 +1,11 @@
+<div class="fileupload fileupload-default">
+    <span class="btn btn-base btn-file">
+        <i class="glyphicon glyphicon-file"></i>
+        <span class="btn-file-name" ng-bind="btnName">选择文件</span>
+        <input type="file" class="file-input-single" ng-show="!options.multiple"/>
+        <input type="file" class="file-input-multiple" ng-show="options.multiple" multiple="multiple"/>
+    </span>
+    <span class="fileupload-preview"></span>
+    <button class="btn-clear close" ng-show="showBtnClear" ng-click="clear()"><span>×</span></button>
+    <!--<span style="margin-left: 20px;">文件不能大于8M且格式为xls、xlsx</span>-->
+</div>

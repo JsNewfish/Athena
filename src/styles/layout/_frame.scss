@@ -1,0 +1,45 @@
+.frame {
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    min-width: 1280px;
+    overflow-x: hidden;
+    >.header {
+        height: 92px;
+        position: relative;
+        z-index: 1000;
+        font-size: 16px;
+    }
+    > .body {
+        min-height: 100%;
+        .sidebar {
+            margin-left: -100%;
+            width: 170px;
+            float: left;
+            background: #E9E9E9;
+        }
+        .main {
+            width: 100%;
+            float: left;
+            padding-left: 170px;
+            padding-right: 6px;
+            min-height: 500px;
+        }
+        &::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+    }
+    >.footer {
+        position: relative;
+    }
+    >.smart-ui-bar {
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 38px;
+        position: fixed;
+        z-index: 100;
+    }
+}

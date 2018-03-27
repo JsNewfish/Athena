@@ -1,0 +1,98 @@
+/* and by xujie*/
+
+.form-control-static,
+.static {
+    display: inline-block;
+    width: auto;
+    &.input-sm {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    &.input-lg {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}
+
+.input-tip {
+    display: inline-block;
+    background: #FFF5B6;
+    border-radius: 2px;
+    color: #D17601;
+    font-size: 12px;
+    margin: 1px 0 0 6px;
+    padding: 1px 3px;
+    position: relative;
+    white-space: nowrap;
+    word-wrap: normal;
+    line-height: 1.2em;
+    &:befor {
+        border-color: transparent #FFF5B6;
+        border-style: dashed solid;
+        border-width: 5px 5px 5px 0;
+        content: "";
+        margin: -4px 0 0 -4px;
+        height: 0;
+        width: 0;
+        overflow: hidden;
+        position: absolute;
+        left: 0;
+        top: 50%;
+    }
+}
+
+.form-text {
+    padding-top: 7px;
+    margin-top: 3px;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+
+/*input*/
+
+.control-split {
+    display: inline-block;
+    width: 12px;
+    text-align: center;
+}
+
+.input-xshort {
+    width: 80px !important;
+}
+
+.input-short {
+    width: 140px !important;
+}
+
+.input-medium {
+    width: 180px !important;
+}
+
+.input-long {
+    width: 220px !important;
+}
+
+.input-xlong {
+    width: 380px !important;
+}
+
+.w5c-error {
+    color: $color-danger;
+}
+
+.form-sm {
+    .form-group {
+        margin-bottom: 10px;
+    }
+}
+
+.form-control.input-date {
+    background: #fff;
+    cursor: pointer;
+    &[disabled] {
+        cursor: not-allowed;
+        background-color: #eee;
+        opacity: 1;
+    }
+}

@@ -1,0 +1,14 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()"><span
+            aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">短信设置</h4>
+</div>
+<div class="modal-body" style="min-height: 450px;">
+    <div dp-sms-box="options"
+         entity="entity"
+         opened="boxStatus.opened"
+         enabled="boxStatus.enabled"
+         save-action="save(result)"
+         cancel-action="cancel(message)"
+         ctrl="ctrl"></div>
+</div>

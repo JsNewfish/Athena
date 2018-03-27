@@ -1,0 +1,219 @@
+.cg-busy {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.cg-busy-animation.ng-hide-add, .cg-busy-animation.ng-hide-remove {
+  transition: all .1s ease;
+  display: block !important;
+}
+
+.cg-busy-animation.ng-hide-remove {
+  opacity: 0;
+  &.ng-hide-remove-active {
+    opacity: 1;
+  }
+}
+
+.cg-busy-animation.ng-hide-add {
+  opacity: 1;
+  &.ng-hide-add-active {
+    opacity: 0;
+  }
+}
+
+.cg-busy-backdrop {
+  background-color: white;
+  opacity: 1.7;
+  z-index: 990;
+}
+
+.cg-busy-element {
+  z-index: 991;
+}
+
+/* All styles below are for the default template. */
+.cg-busy-default-sign {
+  position: absolute;
+  top: 8em;
+  left: 50%;
+  margin-left: -100px;
+  width: 170px;
+  height: 50px;
+  color: #333333;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  //background-color: #e9eeee;
+  //border: 1px solid #dddddd;
+  border-top-width: 0;
+  border-radius: 7px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  // box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.cg-busy-default-text {
+  position: absolute;
+  left: 58px;
+  top: 15px;
+  font-size: 14px;
+  color: #999;
+  font-family: Arial, Helvetica, "Microsoft Yahei";
+}
+
+.cg-busy-default-spinner {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  top: 12px;
+  left: 14px;
+  div {
+    width: 10%;
+    height: 30%;
+    background: #333;
+    position: absolute;
+    left: 44.5%;
+    top: 37%;
+    opacity: 0;
+    -webkit-animation: cg-busy-spinner-anim 1s linear infinite;
+    -moz-animation: cg-busy-spinner-anim 1s linear infinite;
+    -ms-animation: cg-busy-spinner-anim 1s linear infinite;
+    -o-animation: cg-busy-spinner-anim 1s linear infinite;
+    animation: cg-busy-spinner-anim 1s linear infinite;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+
+    &.bar1 {
+      transform: rotate(0deg) translate(0, -142%);
+      animation-delay: 0s;
+    }
+    &.bar2 {
+      transform: rotate(30deg) translate(0, -142%);
+      animation-delay: -0.9167s;
+    }
+    &.bar3 {
+      transform: rotate(60deg) translate(0, -142%);
+      animation-delay: -0.833s;
+    }
+    &.bar4 {
+      transform: rotate(90deg) translate(0, -142%);
+      animation-delay: -0.75s;
+    }
+    &.bar5 {
+      transform: rotate(120deg) translate(0, -142%);
+      animation-delay: -0.667s;
+    }
+    &.bar6 {
+      transform: rotate(150deg) translate(0, -142%);
+      animation-delay: -0.5833s;
+    }
+    &.bar7 {
+      transform: rotate(180deg) translate(0, -142%);
+      animation-delay: -0.5s;
+    }
+    &.bar8 {
+      transform: rotate(210deg) translate(0, -142%);
+      animation-delay: -0.41667s;
+    }
+    &.bar9 {
+      transform: rotate(240deg) translate(0, -142%);
+      animation-delay: -0.333s;
+    }
+    &.bar10 {
+      transform: rotate(270deg) translate(0, -142%);
+      animation-delay: -0.25s;
+    }
+    &.bar11 {
+      transform: rotate(300deg) translate(0, -142%);
+      animation-delay: -0.1667s;
+    }
+    &.bar12 {
+      transform: rotate(330deg) translate(0, -142%);
+      animation-delay: -0.0833s;
+    }
+  }
+}
+
+@-webkit-keyframes cg-busy-spinner-anim {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.25;
+  }
+}
+
+@-moz-keyframes cg-busy-spinner-anim {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.25;
+  }
+}
+
+@keyframes cg-busy-spinner-anim {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.25;
+  }
+}
+
+//固定
+.cg-busy-fixed {
+  .cg-busy-default-wrapper {
+    position: fixed !important;
+    top: $header-height !important;;
+    left: $sidebar-width !important;;
+  }
+}
+
+//页面
+.cg-busy-page {
+  .cg-busy-default-sign {
+    top: 30%;
+  }
+}
+
+//列表
+.cg-busy-list {
+  top: 41px;
+  &.cg-busy-backdrop {
+    top: 41px;
+  }
+}
+
+//上传
+.cg-busy-progress {
+  .cg-busy-default-sign {
+    width: 300px;
+    margin-left: -150px;
+    top: 40%;
+  }
+  .progress {
+    margin-bottom: 10px;
+  }
+  .cg-busy-progress-text {
+    font-size: 18px;
+    text-align: center;
+  }
+}
+//行内
+.cg-busy-inline {
+  &.cg-busy {
+    position: static;
+  }
+  .cg-busy-inline-wrapper {
+    display: inline-block;
+    position: static !important;
+  }
+}

@@ -1,0 +1,33 @@
+.msg {
+  position: relative;
+  display: inline-block;
+  line-height: 20px;
+  padding: 0 5px 0 31px;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 10px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("../images/components/icon-msg.png") no-repeat;
+    vertical-align: middle;
+  }
+}
+
+.msg-warning {
+  @include msg-variant(#d17601, -7px, -7px)
+}
+
+.msg-info {
+  @include msg-variant(#6a9ec2, -7px, -157px)
+}
+
+.msg-success {
+  @include msg-variant(#5cb533, -7px, -97px)
+}
+
+.msg-error {
+  @include msg-variant(#ed5851, -7px, -127px)
+}

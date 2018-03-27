@@ -1,0 +1,265 @@
+<div class="view-goods-list view-goods-list-modal">
+    <div class="modal-body">
+        <div class="goods-filter-bar navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false"> {{approveStatus.indexOf('onsale')>-1?"出售中":"在库中"}} <span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a ng-click="switchApproveStatus('onsale')">出售中</a></li>
+                            <li><a ng-click="switchApproveStatus('instock')">在库中</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" style="color:#FC8746">
+                        <span ng-if="!selectedModal" ng-click="showSelected()">已选中&nbsp; {{outputIds.length}} <span
+                                ng-if="options.limitCount">/{{options.limitCount}}</span></span>
+                            <span ng-if="selectedModal" ng-click="showSelected()">返回全部 </span>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">{{from.text}} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li data-ng-repeat="item in fromEnum" ng-click="switchFrom(item)"><a>{{item.text}}</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            {{category.name}} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="item in categoryEnum">
+                                <a ng-click="selectCategory(item)" ng-class="{'text-info':item.isParent}"><i
+                                        ng-if="!item.isParent">&nbsp;&nbsp;</i>{{item.name}}</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left" style="margin-right:-10px;">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">每页{{pageSize}}条 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="item in sizeEnum"><a ng-click="switchSizeModel(item)">{{item}}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="goods-operation-bar navbar navbar-default">
+            <div class="container-fluid">
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <div class="btn-group btn-group-sm">
+                            <button class="btn btn-default"
+                                    ng-class="{'btn-base':order.cur.type==''}"
+                                    ng-click="orderBy()">默认
+                            </button>
+                            <button class="btn btn-default"
+                                    ng-class="{'btn-base':order.cur.type=='modified'}"
+                                    ng-click="orderBy('modified')">最后修改
+                                <i class="glyphicon"
+                                   ng-class="{'glyphicon-arrow-up':order.modified.direction=='asc','glyphicon-arrow-down':order.modified.direction=='desc'}"></i>
+                            </button>
+                            <button class="btn btn-default"
+                                    ng-class="{'btn-base':order.cur.type=='list_time'}"
+                                    ng-click="orderBy('list_time')"
+                                    >最新上架
+                                <i class="glyphicon"
+                                   ng-class="{'glyphicon-arrow-up':order.listTime.direction=='asc','glyphicon-arrow-down':order.listTime.direction=='desc'}"></i>
+                            </button>
+                            <button class="btn btn-default"
+                                    ng-class="{'btn-base':order.cur.type=='num'}"
+                                    title="库存" ng-click="orderBy('num')">库存
+                                <i class="glyphicon"
+                                   ng-class="{'glyphicon-arrow-up':order.num.direction=='asc','glyphicon-arrow-down':order.num.direction=='desc'}"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        &nbsp; &nbsp;
+                        <div class="checkbox" ng-show="options.hiddenCurrent">
+                            <label for="hiddenCurrent">
+                                <input type="checkbox" ng-model="hiddenCurrent" id="hiddenCurrent"
+                                       ng-click="toggleHideCurrent()"/>隐藏本活动宝贝</label>
+                        </div>
+                        &nbsp; &nbsp;
+                        <div class="checkbox" ng-show="options.hiddenCategory">
+                            <label for="hiddenCategory">
+                                <input type="checkbox" ng-model="hiddenCategory" id="hiddenCategory"
+                                       ng-click="toggleHideCategory()"/>隐藏同类活动宝贝</label>
+                        </div>
+                    </div>
+                </form>
+                <form action="" class="navbar-form navbar-right">
+                    <div class="form-group search-input-group">
+                        <div class="input-group input-group-sm">
+                            <input type="text" class="form-control common-search-input" style="width: 200px;"
+                                   placeholder="关键字、商品链接、商品编码"
+                                   ng-model="keyword" ng-keyup="searchItem($event)">
+                        <span class="btn-clear-keyword" ng-show="keyword.length>0"><i
+                                class="glyphicon glyphicon-remove"></i></span>
+
+                            <div class="input-group-addon btn-search cursor-hand" ng-click="getList(1)"> 搜索
+                            </div>
+                            <div class="input-group-addon btn-reset cursor-hand" ng-click="reset()"> 重置
+                            </div>
+                        </div>
+                        <div class="batch-search" contenteditable="true">
+                            <div class="title">
+                                批量搜索商品id或商家编码
+                            </div>
+                        <textarea cols="30" rows="5" class="batch-search-input"
+                                  placeholder="输入多个商品id或商家编码，以回车分隔"
+                                  ng-model="batchKeyword"></textarea>
+
+                            <div class="counter">
+                                0/20
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="content-wrap" cg-busy="{promise:loading ,message:'加载中。。。'}">
+            <div class="content">
+                <div class="goods-list-wrap">
+                    <ul class="goods-list " ng-class="{'list-model':isListModel}">
+                        <li class="goods-wrap" ng-show="!selectedModal" data-ng-repeat="item in list">
+                            <div class="goods" id="{{'goods_'+item.id}}"
+                                 ng-class="{selected:item.selected, disabled:(item.disabled) }"
+                                    >
+                                <div class="tip">
+                                    <span class="title h-title">点击图片选择</span>
+                                    <span class="title s-title">已选择</span>
+                                </div>
+                                <div class="pic" ng-click="select(item)">
+                                    <a>
+                                        <img ng-src="{{item.picUrl+'_140x140.jpg'}}">
+                                    </a>
+                                </div>
+                                <div class="info">
+                                    <a class="title" target="_blank"
+                                       ng-href="{{'https://item.taobao.com/item.htm?id='+item.id}}">{{item.title }}</a>
+
+                                    <p class="price">
+                                        <strong ng-if="!isPromotion"><span class="text-danger">¥</span>{{item.price|coinToDuller}}</strong>
+                                        <strong ng-if="isPromotion"><span class="text-danger">¥</span>{{item.price}}</strong>
+                                    </p>
+                                </div>
+                                <div class="status" ng-class="{'none':!(item.discounts.length||item.rewards.length)}"
+                                     ng-if="options.showRelatedPromotion">
+                                    <div ng-if="item.discounts.length||item.rewards.length" class="cursor-hand">
+                                        已参加:
+                                <span ng-show="item.discounts.length"><span
+                                        ng-bind="item.discounts.length"></span>个折扣 </span>
+                                <span ng-show="item.rewards.length"> <span
+                                        ng-bind="item.rewards.length"></span>个满减</span>
+
+                                        <div class="status-list-wrap">
+                                            <ul class="status-list">
+                                                <li data-ng-repeat="discount in item.discounts">
+                                                    <a ng-href="{{'#/tool/discountPreview?id='+discount.id}}"
+                                                       target="_blank">
+                                                        <span class="name" ng-bind="discount.name"></span>
+
+                                                        <div class="time">
+                                                            <span class="start">{{discount.startTime|listdate:"YYYY-MM-DD"}}</span>
+                                                            至
+                                                            <span class="end">{{discount.endTime|listdate:"YYYY-MM-DD"}}</span>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li data-ng-repeat="reward in item.rewards">
+                                                    <a ng-href="{{'#/tool/rewardPreview?id='+reward.id}}"
+                                                       target="_blank">
+                                                        <span class="name" ng-bind="reward.name"></span>
+
+                                                        <div class="time">
+                                                            <span class="start">{{reward.startTime|listdate:"YYYY-MM-DD"}}</span>
+                                                            至
+                                                            <span class="end">{{reward.endTime|listdate:"YYYY-MM-DD"}}</span>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mask">
+                                    <span class="title d-title"></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="goods-wrap" ng-show="selectedModal" data-ng-repeat="item in output">
+                            <div class="goods selected" id="{{'goods_'+item.id}}">
+                                <div class="tip">
+                                    <span class="title s-title">点击图片取消</span>
+                                </div>
+                                <div class="pic" ng-click="select(item)">
+                                    <a>
+                                        <img ng-src="{{item.picUrl+'_150x150.jpg'}}">
+                                    </a>
+                                </div>
+                                <div class="info">
+                                    <a class="title" target="_blank"
+                                       ng-href="{{'https://item.taobao.com/item.htm?id='+item.id}}">{{item.title }}</a>
+
+                                    <p class="price">
+                                        <strong ng-if="!isPromotion"><span class="text-danger">¥</span>{{item.price|coinToDuller}}</strong>
+                                        <strong ng-if="isPromotion"><span class="text-danger">¥</span>{{item.price}}</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="none-item" ng-if="!selectedModal&&list.length==0">
+                    <div class="block">
+                        <div class="title text-center">没有找到相关商品</div>
+                    </div>
+                </div>
+                <div class="none-item" ng-if="selectedModal&&output.length==0">
+                    <div class="block">
+                        <div class="title text-center">还未选择商品</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="float-toolbar-wrap">
+            <div class="float-toolbar">
+                <div class="btn-group-vertical btn-group-sm">
+                    <button class="btn btn-default no-transition" ng-if="!selectedModal" tooltip="上一页"
+                            tooltip-placement="right"
+                            ng-click="prev()"><i class="glyphicon glyphicon-menu-up"></i>
+                    </button>
+                    <button class="btn btn-default btn-default btn-all no-transition"
+                            ng-if="!selectedModal"
+                            ng-click="selectAll()"
+                            ng-class="{'btn-base':allSelected}">
+                        <span ng-if="!allSelected">全选<br>本页</span>
+                        <span ng-if="allSelected">取消<br>选择</span>
+                    </button>
+                    <button class="btn btn-base no-transition" ng-click="clearAll()" ng-if="selectedModal">
+                        清空 <br/>选择
+                    </button>
+                    <button class="btn btn-default no-transition" tooltip-placement="right"
+                            ng-if="!selectedModal" tooltip="下一页"
+                            ng-click="next()"><i class="glyphicon glyphicon-menu-down"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <paging page="pageNo" page-size="pageSize" total="count"  class="pull-left " style="margin-left: 360px"
+            template-url="views/paging/pagingSimple.html" paging-action="getList(page,pageSize,total)"></paging>
+        <div class="pull-left" style="opacity:0;">
+            <span style="color:#FC8746">已选中 {{outputIds.length}} <span ng-if="options.limitCount">/{{options.limitCount}}</span>
+            </span>
+        </div>
+    </div>
+</div>

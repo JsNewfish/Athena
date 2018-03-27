@@ -1,0 +1,199 @@
+.sms-box {
+    .tooltip-inner {
+        min-width: 190px;
+    }
+    .sms-editor {
+        margin-bottom: 5px;
+    }
+    .msg-preview {
+        position: absolute;
+        margin-left: 40px;
+        left: 770px;
+        > .phone {
+            background-image: url("../images/components/phone.png");
+            width: 226px;
+            height: 406px;
+            > .phone-content {
+                overflow-y: auto;
+                height: 264px;
+                width: 187px;
+                margin-left: 21px;
+                margin-top: 78px;
+                padding: 10px;
+                position: absolute;
+                word-break: break-all;
+            }
+        }
+    }
+    .test-send-control {
+        .checkbox {
+            display: inline-block;
+            margin-left: 90px;
+        }
+        .test-send {
+            position: absolute;
+            top: 7px;
+            margin-left: 20px;
+        }
+        .test-disableSend {
+            cursor: inherit;
+            text-decoration: none;
+        }
+        .send-test-input {
+            width: 387px;
+        }
+    }
+    .status-edit .layout-form {
+        min-height: 413px;
+    }
+}
+
+.sms-editor {
+    width: 591px;
+    .tooltip-inner {
+        min-width: 190px;
+    }
+    .navbar {
+        .navbar-text {
+            line-height: 20px;
+            margin: 10px;
+        }
+        .navbar-nav > li > a {
+            padding: 10px 5px;
+            float: left;
+        }
+        .navbar-nav > li > button {
+            background: none;
+            border: none;
+            line-height: 38px;
+        }
+        .navbar-form {
+            margin: 5px
+        }
+    }
+    .sms-editor-heading {
+        min-height: 40px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        margin-bottom: 0;
+        font-size: $font-size-small;
+        .more {
+            padding: 10px 15px;
+        }
+        .temp-select {
+            margin-right: 0;
+        }
+        .param-list {
+            .param,
+            .tmp-param {
+                color: $color-base;
+                &:hover {
+                    color: darken($bg-color-base, 2%);
+                }
+            }
+        }
+    }
+    .editor {
+        border: 1px solid #ddd;
+        background: #fff;
+        padding: 10px;
+        height: 135px;
+        overflow: auto;
+        border-top: 0;
+        border-bottom: 0;
+        background: url('https://img.alicdn.com/imgextra/i2/78622573/TB2UVMIbUdnpuFjSZPhXXbChpXa_!!78622573.jpg') no-repeat right top;
+        &:focus {
+            outline: none;
+        }
+    }
+    .sms-editor-footer {
+        height: 42px;
+        min-height: 40px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        margin-bottom: 0;
+        font-size: $font-size-small;
+        .signature-label {
+            margin-right: 0;
+        }
+        .signature {
+            margin: 0;
+            line-height: 20;
+            padding: 0 5px;
+            width: 100px;
+        }
+        .unsubscribe {
+            background: #E3E1E2;
+            padding: 2px 20px;
+            color: #333;
+            position: absolute;
+            right: 0;
+            bottom: 41px;
+            cursor: pointer;
+            bottom: auto \0;
+            top: -23px \0;
+        }
+    }
+    .input-count,
+    .msg-total-count {
+        color: $orange;
+        font-weight: bold;
+    }
+}
+
+.sms-modal {
+    fieldset {
+        border: none;
+    }
+    legend.title {
+        display: none;
+    }
+    .modal-dialog {
+        width: 970px;
+    }
+    .modal-body {
+        padding: 0;
+        overflow-y: visible;
+    }
+    .sms-box {
+        .layout-form > .form-group .control-label {
+            width: 107px;
+        }
+        .msg-preview {
+            left: 680px;
+        }
+    }
+}
+
+.view-templatelibrary {
+    .condition-label-group {
+        margin-bottom: 10px;
+        .condition-label {
+            background-color: white;
+            border: 1px solid #f0f0f0;
+            padding: 2px 12px 4px;
+            margin-right: 8px;
+            font-size: $font-size-small;
+            &.active {
+                border-color: $bg-color-base;
+            }
+            &:hover {
+                border-color: lighten($bg-color-base, 5%);
+            }
+        }
+    }
+    .template-list {
+        th {
+            font-size: 12px;
+            font-weight: bold;
+        }
+    }
+    .glyphicon-star {
+        color: $orange;
+    }
+    .custom-template,
+    .default-template {
+        height: 355px;
+        overflow-y: auto;
+    }
+}

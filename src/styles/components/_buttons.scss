@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+//button
+
+.btn-base {
+  @include button-variant(#fff,$bg-color-base,darken($bg-color-base,2%));
+}
+
+
+
+

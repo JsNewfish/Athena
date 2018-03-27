@@ -1,0 +1,32 @@
+.inform-box {
+  padding: 10px;
+  margin-bottom: 20px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #c9c9c9;
+  &.active {
+    border-color: $bg-color-base;
+    background: #FFFFFF;
+  }
+  > .title {
+    padding: 0 5px;
+    border: 0;
+    width: auto;
+    margin: 0;
+    font-size: 16px;
+    color: $gray-light;
+  }
+  .layout-form {
+    > .form-group {
+      margin-bottom: 5px;
+      > .control-label {
+        width: 135px;
+        color: #999;
+      }
+    }
+
+  }
+  .operations {
+    margin: 20px 0;
+  }
+}

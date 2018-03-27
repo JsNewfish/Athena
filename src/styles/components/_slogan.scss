@@ -1,0 +1,60 @@
+.slogan {
+  margin-bottom: 5px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 10px;
+
+  .slogan-icon {
+    display: block;
+    width: 32px;
+    height: 32px;
+    float: left;
+    margin: auto 10px;
+    margin-top: 5px;
+  }
+
+  .slogan-content {
+    padding-left: 52px;
+  }
+
+  // Headings for larger alerts
+  h5 {
+    margin-top: 0;
+    color: inherit;
+    font-weight: bold;
+  }
+
+  // Provide class for links that match alerts
+  .link {
+    font-weight: bold;
+  }
+
+  // Improve alignment and spacing of inner content
+
+  ul {
+    margin-bottom: 0;
+    padding: 0;
+    li {
+      margin-bottom: 5px;
+    }
+  }
+  p{
+    margin-buttom: 5px;
+  }
+}
+
+.slogan-help {
+  @include slogan-variant($state-success-bg, $state-success-border, $state-success-text) ;
+}
+
+.slogan-danger {
+  @include slogan-variant($state-danger-bg, $state-danger-border, $state-danger-text);
+}
+
+.slogan-notice {
+  @include slogan-variant($state-info-bg, $state-info-border, $state-info-text) ;
+}
+
+.slogan-warning {
+  @include slogan-variant($state-warning-bg, $state-warning-border, $state-warning-text);
+}

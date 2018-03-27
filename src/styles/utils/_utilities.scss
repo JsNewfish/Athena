@@ -1,0 +1,135 @@
+/* utilities */
+
+//position
+.pos-r {
+    position: relative;
+}
+
+.pos-a {
+    position: absolute;
+}
+
+.pos-f {
+    position: fixed;
+}
+
+//width and height
+.w-100 {
+    width: 100px;
+}
+
+//margin and padding
+.m-t-10 {
+    margin-top: 10px;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+//font-color
+.text-base {
+    color: $color-base;
+}
+
+.text-primary {}
+
+.text-warning {
+    color: $orange;
+}
+
+.text-info {
+    color: #5BC0DE;
+}
+
+.text-danger {
+    color: $color-danger;
+}
+
+.text-success {
+    color: #4BCA4D;
+}
+
+.text-disable {
+    color: #d5d5d5;
+}
+
+.text-base-imp {
+    color: $color-base !important;
+}
+
+.text-primary-imp {
+    color: $color-primary !important;
+}
+
+.text-warning-imp {
+    color: $orange !important;
+}
+
+.text-info-imp {
+    color: #5BC0DE !important;
+}
+
+.text-danger-imp {
+    color: $color-danger;
+}
+
+.text-success-imp {
+    color: #4BCA4D !important;
+}
+
+.text-disable-imp {
+    color: #d5d5d5 !important;
+}
+
+//cursor
+.cursor-hand {
+    cursor: pointer !important;
+}
+
+.cursor-arrow {
+    cursor: default !important;
+}
+
+.link {
+    cursor: pointer;
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+    }
+}
+
+.no-decoration {
+    text-decoration: none;
+    &:hover {
+        text-decoration: none;
+    }
+    &:focus {
+        text-decoration: underline;
+    }
+}
+
+//table center  middle
+.text-center {
+    text-align: center;
+}
+
+.text-overflow {
+    @include text-overflow;
+}
+
+.no-transition {
+    transition: none;
+}
+
+.no-shadow {
+    box-shadow: none;
+}
+
+.phone-content-preview {
+    span {
+        margin: 0 2px;
+        font-weight: bolder;
+        color: $color-base;
+    }
+}

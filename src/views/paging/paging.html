@@ -1,0 +1,30 @@
+<div class="paging-bar clearfix" ng-hide="Hide">
+    <div class="pull-left">
+        <ul ng-class="ulClass" class="operation">
+            <li class="operation"><span>共 <strong>{{total}}</strong> 条</span></li>
+            <li class="operation size-setting">
+                <a> 每页 <select class="form-control form-control-sm form-control-static size-selector"
+                               ng-options="item for item in  pageSizeEnum"
+                               data-ng-change="sizeChanged()"
+                               ng-model="pageSize"> </select>
+                </a>
+            </li>
+            <li class="unit"><span>条</span></li>
+        </ul>
+    </div>
+    <div class="pull-right">
+        <ul ng-hide="Hide" ng-class="ulClass">
+            <li title="{{Item.title}}" ng-repeat="Item in List"
+                ng-class="Item.liClass"
+                ng-click="Item.action()">
+                <a ng-bind="Item.value"></a>
+            </li>
+        </ul>
+        <ul ng-hide="Hide" ng-class="ulClass" class="goto">
+            <li>
+                <a><input type="text" class="input-goto" ng-model="targetPageNo"/></a>
+            </li>
+            <li><a class="btn-goto" ng-click="goto()">GO</a></li>
+        </ul>
+    </div>
+</div>

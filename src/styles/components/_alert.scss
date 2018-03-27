@@ -1,0 +1,130 @@
+.alert {
+  &.alert-fixed {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    opacity: .9;
+    box-shadow: 0 2px 5px #A5A5A5;
+    z-index: $alert-fixed-index;
+    position: fixed;
+    margin: 30px auto;
+    left: 50%;
+  }
+
+  &.alert-fixed {
+    width: 300px;
+    margin-left: -150px;
+  }
+
+  &.alert-fixed.alert-lg {
+    width: 500px;
+    margin-left: -250px;
+  }
+
+  &.alert-fixed {
+    .close {
+      font-size: 16px;
+      margin-top: -15px;
+      &:hover,&:focus{
+        outline:0;
+      }
+    }
+  }
+
+}
+
+.alert-soft {
+  width: 350px;
+  border: 1px solid #d0413b;
+  background: #ffeeee;
+  padding: 10px;
+  border-radius: 0;
+  position: fixed;
+  z-index: 1050;
+  top: 200px;
+  left: 50%;
+  margin-left: -175px;
+  opacity: .8;
+  .title {
+    margin-top: 0;
+    color: #d5321f;
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 3px;
+  }
+  .icon-wrap {
+    float: left;
+    width: 60px;
+    height: 50px;
+    border-right: 1px solid #d0413b;
+    .icon {
+      width: 30px;
+      height: 30px;
+      background-repeat: no-repeat;
+      background-image: url(../images/components/alert-soft-error.png);
+      margin-left: 15px;
+      margin-top: 10px;
+    }
+  }
+  .content {
+    padding-left: 80px;
+  }
+}
+
+.confirm {
+  .modal-dialog {
+    width: 380px;
+    &.modal-lg{
+      width:550px;
+    }
+  }
+  .modal-header {
+    padding: 10px 15px;
+    .modal-title {
+      font-size: 16px;
+      line-height: 20px;
+    }
+    .close {
+      margin-top: 0
+    }
+  }
+  .modal-body {
+    padding: 40px 50px 30px 50px
+  }
+  .modal-footer {
+    .btn{
+      min-width:70px;
+    }
+  }
+  .confirm-icon {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    font-size: 0;
+    display: table-cell;
+    float: left;
+    img {
+      max-width: 100%;
+      max-height: 60px;
+      vertical-align: middle;
+    }
+  }
+  .confirm-content {
+    padding-left: 70px;
+    color: #999;
+    .confirm-title {
+      color: #333;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 0;
+      margin-top: 0;
+      margin-bottom:7px;
+    }
+    p{
+       margin: 0 0 5px;
+    }
+    ul,ol{
+      margin-bottom:5px;
+    }
+  }
+}
+

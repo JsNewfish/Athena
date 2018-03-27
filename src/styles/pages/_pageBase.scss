@@ -1,0 +1,45 @@
+.view {
+  min-height: 500px;
+  @include clearfix;
+  background: #fff;
+  padding-bottom: 15px;
+  .title-bar {
+    color:#333;
+    margin-bottom: 8px;
+    .title-bar-inner {
+      border-bottom: 2px solid #eaeaea;
+      padding: 18px 0;
+      height: 56px;
+      @include clearfix;
+      .title {
+        float: left;
+        margin: 0;
+        padding-left: 10px;
+        border-left: 3px solid $color-base;
+        font-size: 16px;
+        line-height: 18px;
+      }
+      .description {
+        color: #999;
+        font-size: 14px;
+        padding-left: 5px;
+      }
+    }
+  }
+  .advertisement-box{
+    margin-bottom:10px;
+    >a{
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-size: 0px;
+      >img{
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+
+
+

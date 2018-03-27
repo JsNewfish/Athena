@@ -1,0 +1,44 @@
+.pop {
+  position: fixed;
+  width: 360px;
+  border:1px solid transparent;
+  transition: transform .3s ease-out;
+  transform: translate(0, 100%);
+  .pop-content {
+
+  }
+  .pop-header {
+    min-height: 16.43px;
+    padding: 0 10px;
+    border-bottom: 1px solid transparent;
+    .pop-title{
+      font-size: 18px;
+    }
+  }
+  .pop-body {
+    position: relative;
+    padding: 15px;
+  }
+  .pop-footer {
+    padding: 10px;
+    text-align: right;
+    border-top: 1px solid transparent;
+  }
+
+  &.in{
+    transform: translate(0,0);
+  }
+}
+
+
+.pop-help {
+  @include pop-variant($state-success-bg, $state-success-border, $state-success-text); 
+}
+
+.pop-danger {
+  @include pop-variant($state-danger-bg, $state-danger-border, $state-danger-text);
+}
+
+.pop-notice {
+  @include pop-variant($state-info-bg, $state-info-border, $state-info-text) ;
+} 

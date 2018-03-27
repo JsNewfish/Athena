@@ -1,0 +1,13 @@
+.nav-tabs{
+  background: #f4f4f4;
+}
+.nav-tabs > li > a{
+  border-radius: 0;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  background-color: #fcfcfc;
+  border: 0;
+  border-top: 3px solid #107FE4;
+  padding-top: 12px;
+}

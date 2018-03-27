@@ -1,0 +1,51 @@
+<div class="area-box">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()"><span
+                aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">选择所在省份</h4>
+    </div>
+    <div class="modal-body">
+        <div class="controls-bar">
+            <div class=" checkbox-inline">
+                <label>
+                    <span ng-click="selectAll($event)" ng-model="allSelect">
+                        <i class="glyphicon glyphicon-ok-sign" ng-class="{'text-success':allSelect}"></i> 全选
+                     </span>
+                </label>
+            </div>
+            <div class=" checkbox-inline">
+                <label>
+                        <span type="checkbox" ng-click="selectNone($event)" ng-model="noneSelect"><i
+                                class="glyphicon glyphicon-ok-sign"
+                                ng-class="{'text-success':noneSelect}"></i> 全不选</span>
+                </label>
+            </div>
+            <div class=" checkbox-inline">
+                <label>
+                        <span type="checkbox" ng-click="selectFaraway()" ng-model="remoteArea"><i
+                                class="glyphicon glyphicon-ok-sign"
+                                ng-class="{'text-success':remoteArea}"></i> 排除偏远地区</span>
+                </label>
+            </div>
+        </div>
+        <div class="area-list">
+            <div ng-repeat="region in areas">
+                <label style="color:#dd0000"><input type="checkbox" ng-model="region.select"
+                                                    ng-click="selectRegion(region,region.select)">{{region.name}}</label>
+                <label ng-repeat="state in region.province"><input type="checkbox" ng-model="state.select"
+                                                                   ng-click="selectState(state,state.select)">
+                    {{state.name}}
+                </label>
+            </div>
+        </div>
+        <div class="text-warning" ng-show="!options.showRemote">
+            注意：不支持港澳台，海外
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="text-center">
+            <button class="btn btn-base w-100" ng-click="save($event)">确定</button>
+            <button class="btn btn-default w-100" ng-click="cancel($event)">取消</button>
+        </div>
+    </div>
+</div>

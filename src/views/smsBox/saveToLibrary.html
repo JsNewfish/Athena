@@ -1,0 +1,27 @@
+<div class="view-templatelibrary">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()"><span
+                aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title">另存为短语</h3>
+    </div>
+    <div class="modal-body">
+       <form name="baseForm">
+           <div class="form-group" ng-class="{'has-error':baseForm.name.$invalid}">
+               <input type="text" name="name" class="form-control" placeholder="模板名称"
+                      ng-model="templateName"
+                      ng-maxlength="10"
+                      ng-pattern="/^[\u4e00-\u9fa5_a-zA-Z0-9]+$/"/>
+               <div class="help-block">
+                   <small ng-if="baseForm.name.$error.maxlength">请输入10个以内的字符</small>
+                   <small ng-if="baseForm.name.$error.pattern">请输入汉字，英文，数字或者下划线</small>
+               </div>
+           </div>
+       </form>
+    </div>
+    <div class="modal-footer">
+        <div class="text-center">
+            <button class="btn btn-base" ng-click="save()" ng-class="{disabled:baseForm.$invalid}">确定</button>
+            <button class="btn btn-default" ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>

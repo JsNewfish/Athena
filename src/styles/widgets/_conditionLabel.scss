@@ -1,0 +1,33 @@
+.condition-label-group {
+  padding-top: 8px;
+  .condition-label {
+    background-color: white;
+    border: 1px solid #f0f0f0;
+    padding: 2px 12px 4px;
+    margin-right: 8px;
+    font-size: $font-size-small;
+    position: relative;
+    &.active {
+      border-color: $bg-color-base;
+    }
+
+    &:hover {
+      border-color: lighten($bg-color-base, 5%);
+    }
+  }
+  .active-icon-background {
+    border-right: 20px solid $bg-color-base;
+    margin-left: -8px;
+    border-top: 16px solid transparent;
+    display: inline-block;
+    position: absolute;
+    top: 7px;
+    color: white;
+    font-size: 12px;
+  }
+  .glyphicon-ok {
+    position: absolute;
+    top: 12px;
+    color: white;
+  }
+}

@@ -1,0 +1,105 @@
+<div cg-busy="{promise:uploading,message:'上传中',type:'progress',progressValue:100}" class="view-list">
+    <div class="modal-header ">
+        <button type="button" class="close" aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title">选择文件</h3>
+    </div>
+    <div class="modal-body">
+        <div class="operation-bar">
+            <div dp-fileupload ng-model="fileDocument" multiple="true" auto-clear="true" changed-action="uploadFile(data)" 
+            class="fileupload-container"></div>
+            <a class="text-primary" ng-click="downloadTemplate()">下载模板</a>
+            <span style="margin-left: 20px;" class="text-primary">文件格式：为xls、xlsx，文件大小不能大于8M</span>
+        </div>
+        <div class="search-bar collapsed" dp-filter-bar="">
+            <form name="filterForm" novalidate>
+                <div class="search-pane">
+                    <div class="normal-search">
+                        <div class="form-group col-xs-4" style="margin-right:0">
+                            <div class="control-label" style="width: 68px;">文件名：</div>
+                            <div class="controls">
+                                <input type="text" ng-model="name"
+                                       placeholder="输入文件名"
+                                       class="form-control form-control-static  input-sm">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label for="" class="control-label" style="width: 71px;">上传时间：</label>
+
+                            <div class="controls">
+                                <input type="text" ng-model="startTime" name="startTime" compare-type="datetime"
+                                       placeholder="开始时间"
+                                       dp-datepicker
+                                       class="form-control form-control-static input-sm"
+                                       dp-valid-lower-than={{tradeFilter.endTime}}>
+                                <span>~</span>
+                                <input type="text" ng-model="endTime" dp-datepicker
+                                       placeholder="结束时间"
+                                       class="form-control form-control-static input-sm" name="endTime">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="operations">
+                    <div class="right">
+                        <button class="btn btn-base btn-sm" ng-click="getList(1)">筛选</button>
+                        <button class="btn btn-default btn-sm" ng-click="reset()">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="data-table-wrap" style="height:270px;overflow: auto;">
+            <table class="table data-table" cg-busy="{promise:loading ,message:'加载中。。。'}">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>选择</th>
+                    <th>上传文件</th>
+                    <th>记录数</th>
+                    <th>导入时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody ng-show="list.length">
+                <tr ng-repeat="item in list" ng-click="selectFile(item)" ng-class="{selected:item.id==file.id}">
+                    <td>{{$index+1+(pageNo-1)*pageSize}}</td>
+                    <td>
+                        <input type="radio" name="fileInput" ng-value="item.id" ng-model="select"/>
+                    </td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.successCount}}</td>
+                    <td>{{item.createTime|listdate:'YYYY-MM-DD HH:mm:ss'}}</td>
+                    <td>
+                        <a class="font-color-light-blue cursor-hand" ng-click="deleteFile(item)">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody ng-show="!list.length">
+                <tr class="double-height">
+                    <td colspan="6">
+                        <div class="none-item-container">
+                            <div class="none-item">
+                                <div class="icon">
+                                </div>
+                                抱歉，没有相关数据
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            <div paging page="pageNo" page-size="pageSize" total="count" style="display: inline-block;"
+                 paging-action="getList(page,pageSize,total)" show-prev-next="true">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="text-center">
+            <button class="btn btn-base w-100" ng-click="save()">确定</button>
+            <button class="btn btn-default w-100" data-dismiss="modal" ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>

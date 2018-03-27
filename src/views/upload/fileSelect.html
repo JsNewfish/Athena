@@ -1,0 +1,8 @@
+<div class="uploading">
+    <div class="input-group" data-ng-click="selectFile()">
+        <input type="text" class="form-control ng-pristine ng-valid"  placeholder="请按模板格式编辑后上传"
+               ng-model="data.name" readonly="">
+        <span class="input-group-addon btn-base">浏览</span>
+    </div>
+    <span class="text-primary link download" ng-click="downloadTmpl()" ng-show="options.showDownload">下载模板 </span>
+</div>

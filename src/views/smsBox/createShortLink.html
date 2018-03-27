@@ -1,0 +1,69 @@
+<div class="view-applySignatureBox">
+    <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title">添加营销短链接</h3>
+    </div>
+    <form class="form-horizontal" name="mainForm" w5c-form-validate="validateOptions" novalidate>
+        <div class="modal-body">
+            <div class="slogan slogan-help">
+                <img src="//st.cuxiao.quannengzhanggui.net/static/cdist/images/components/smsEditor/reminder.png" class="slogan-icon">
+                <div class="slogan-content">
+                    <h5>帮助说明：</h5>
+                    <ul>
+                        <li> 1. 只支持将域名taobao.com、tmall.com、jaeapp.com的长链接转成短地址；此短链支持呼起手淘</li>
+                        <li> 2. PC端自定义活动页面，因淘宝无线端没有对应的H5活动页面如直接转化可能会导致跳转至手淘店铺首页，解决方法：建议先到“无线运营中心->无线店铺->店铺装修->自定义页面”生成H5活动页面，再进行转化。</li>
+                        <li> 3.淘短链的点击效果可直接到官方的ECRM后台查看，<a href="https://ecrm.taobao.com/channel/short_link_manager.htm" target="_blank">点此查看效果</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-group">
+                <lable class="control-label col-xs-3">短链类型：</lable>
+                <div class="controls col-xs-8">
+                    <div class=" radio-inline">
+                        <label for="linkType1">
+                            <input type="radio" id="linkType1" name="linkType" ng-model="linkType" value="LT_ACTIVITY" /> 活动链接
+                        </label>
+                    </div>
+                    <div class=" radio-inline">
+                        <label for="linkType2">
+                            <input type="radio" id="linkType2" name="linkType" ng-model="linkType" value="LT_ITEM" /> 宝贝链接
+                        </label>
+                    </div>
+                    <div class=" radio-inline">
+                        <label for="linkType3">
+                            <input type="radio" id="linkType3" name="linkType" ng-model="linkType" value="LT_SHOP" /> 店铺首页
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" ng-if="linkType=='LT_ACTIVITY'" >
+                <label for="" class="control-label col-xs-3">页面链接：</label>
+                <div class="controls col-xs-8">
+                    <input type="text" w5c-dynamic-element class="form-control" placeholder="输入活动页链接，若是PC端页面请先在无线端转成h5页面" name="pageLink" ng-model="$parent.pageLink" required/>
+                </div>
+            </div>
+            <div class="form-group" ng-if="linkType=='LT_ITEM'" >
+                <label for="" class="control-label col-xs-3">宝贝链接：</label>
+                <div class="controls col-xs-8">
+                    <input type="text" w5c-dynamic-element class="form-control" placeholder="输入宝贝链接" name="commodityId" ng-model="$parent.commodityId" required/>
+                   
+                </div>
+            </div>
+            <div class="form-group" ng-show="linkType=='LT_SHOP'">
+                <div class="controls col-xs-9 col-xs-offset-3">
+                    若要插入店铺首页的短地址请直接点击确定即可
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="text-center">
+                <button class="btn btn-base" w5c-form-submit="save($event)">
+                    确定
+                </button>
+                <button class="btn btn-default" data-ng-click="cancel()">取消</button>
+            </div>
+        </div>
+    </form>
+</div>

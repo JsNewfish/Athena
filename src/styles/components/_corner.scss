@@ -1,0 +1,27 @@
+.corner {
+    position: relative;
+    &::after {
+        content: '';
+        display: none;
+        background: url(../images/corner.png) no-repeat;
+        width: 20px;
+        height: 10px;
+        position: absolute;
+        right: 0;
+        z-index: 1000;
+        margin-top: -4px;
+        top:0;
+    }
+    &.corner-new {
+        &::after {
+            display: block;
+            background-position: 0 0;
+        }
+    }
+    &.corner-hot {
+        &::after {
+            display: block;
+            background-position: 0 -10px;
+        }
+    }
+}

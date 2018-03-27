@@ -1,0 +1,107 @@
+.table {
+    tr.double-height {
+        td {
+            height: 60px;
+            vertical-align: middle;
+        }
+    }
+    tr.triple-height {
+        td {
+            height: 80px;
+            vertical-align: middle;
+        }
+    }
+    .tr.middle {
+        td {
+            vertical-align: middle;
+        }
+    }
+    td {
+        font-size: 13px;
+    }
+    td.middle {
+        vertical-align: middle;
+    }
+    .operations {
+        .btn-operation {}
+        i {
+            font-style: normal;
+        }
+    }
+    .none-item-container {
+        text-align: center;
+        .none-item {
+            text-align: left;
+            line-height: 50px;
+            color: #999;
+            font-size: 18px;
+            display: inline-block;
+            padding: 100px 0;
+        }
+        .title {
+            font-weight: bold;
+            margin-bottom: 40px;
+            small {
+                font-size: 16px;
+                display: block;
+                font-weight: normal;
+            }
+        }
+        .icon {
+            height: 50px;
+            width: 50px;
+            background: url(../images/base.png) no-repeat 0px -120px;
+            position: absolute;
+            margin-left: -70px;
+        }
+        .tip-list {
+            margin-bottom: 20px;
+            li {
+                &:before {
+                    content: "";
+                    display: inline-block;
+                    width: 5px;
+                    height: 5px;
+                    border-radius: 5px;
+                    background: #dca3a3;
+                    margin-right: 12px;
+                    vertical-align: 3px;
+                }
+                margin-bottom: 5px;
+            }
+        }
+        .tag-list {
+            margin-bottom: 20px;
+            dt {
+                font-weight: 100;
+                margin-bottom: 10px;
+            }
+            dd {
+                float: left;
+                width: 100px;
+                height: 100px;
+                line-height: 100px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                color: #999;
+                margin-right: 10px;
+                font-size: 15px;
+                text-align: center;
+                cursor: pointer;
+                &:hover {
+                    background: #f0f0f0;
+                    color: $color-base;
+                }
+            }
+        }
+        tr:hover,
+        tr:focus {
+            background: transparent;
+        }
+        &.lucky {
+            .icon {
+                background: url(../images/base.png) no-repeat -60px -60px;
+            }
+        }
+    }
+}
